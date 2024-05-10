@@ -14,6 +14,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	private Player player;
 
 	private GameTable table;
+	private ActionPerformedClass actionPerformed;
 
 	private JButton newGameButton = new JButton("Deal");
 	private JButton hitButton = new JButton("Hit");
@@ -100,31 +101,6 @@ public class GamePanel extends JPanel implements ActionListener {
 		player.setWallet(100.00);
 
 		updateValues();
-	}
-
-	public void actionPerformed(ActionEvent evt) {
-		String act = evt.getActionCommand();
-
-		if (act.equals("Deal")) {
-			newGame();
-		} else if (act.equals("Hit")) {
-			hit();
-		} else if (act.equals("Double")) {
-			playDouble();
-		} else if (act.equals("Stand")) {
-			stand();
-		} else if (isBetEvent(act)) {
-			increaseBet(Integer.parseInt(act));
-		} else if (act.equals("Clear")) {
-			System.out.println("clear bet");
-			clearBet();
-		}
-
-		updateValues();
-	}
-
-	public boolean isBetEvent(String act) {
-		return act.equals("1") || act.equals("5") || act.equals("10") || act.equals("25") || act.equals("100");
 	}
 
 	public void newGame() {
